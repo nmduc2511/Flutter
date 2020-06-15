@@ -128,6 +128,10 @@ class MyApp extends StatelessWidget {
                       Checkbox(
                         value: true,
                         checkColor: Colors.white,
+                        activeColor: Colors.orangeAccent,
+                        onChanged: (bool newValue) {
+
+                        },
                       ),
 
                       Text(
