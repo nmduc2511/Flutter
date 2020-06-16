@@ -6,8 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  TextEditingController _controller;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,19 +34,8 @@ class MyApp extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(
-                          'CONN',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              fontSize: 36, color: Colors.pink[500], fontWeight: FontWeight.w500
-                          )
-                      ),
-
-                      Text(
-                          'EXION',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              fontSize: 36, color: Colors.white, fontWeight: FontWeight.w500
-                          )
-                      ),
+                      Text('CONN', style: TextStyle(color: Colors.pink[500], fontSize: 36, fontWeight: FontWeight.w500)),
+                      Text('EXION', style: TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.w500)),
                     ],
                   )
                 ),
@@ -57,9 +44,7 @@ class MyApp extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                   child: Text(
                     'Find and Meet people around\n you to find LOVE',
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
-                        fontSize: 15, color: Colors.white, fontWeight: FontWeight.w300
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w300),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -68,9 +53,7 @@ class MyApp extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Text(
                     'SIGN IN',
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
-                        fontSize: 24, color: Colors.white
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 24),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -79,45 +62,12 @@ class MyApp extends StatelessWidget {
 
                 Container(
                   margin: EdgeInsets.fromLTRB(35, 0, 35, 0),
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      hintText: 'Enter Email',
-                      hintStyle: TextStyle(color: Colors.white),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.white
-                          )
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.white
-                          )
-                      ),
-                    ),
-                  ),
+                  child: TextFieldUnderline('Enter Email', false)
                 ),
 
                 Container(
                   margin: EdgeInsets.fromLTRB(35, 30, 35, 0),
-                  child: TextField(
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.white),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.white
-                          )
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.white
-                          )
-                      ),
-                    ),
-                  ),
+                  child: TextFieldUnderline('Password', true)
                 ),
 
                 Container(
@@ -136,9 +86,7 @@ class MyApp extends StatelessWidget {
 
                       Text(
                         'Remember Password',
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 14, color: Colors.white, fontWeight: FontWeight.w600
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ],
@@ -247,11 +195,9 @@ class MyApp extends StatelessWidget {
                                 'SIGN UP',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w800),
-                              ),
-                            ),
-                          ],
-                        )
-                      ),
+                              ),),
+                          ],)),
+
                     ],
                   ),
                 )
@@ -264,7 +210,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class GradientText extends StatelessWidget {
   GradientText(
@@ -294,16 +239,31 @@ class GradientText extends StatelessWidget {
   }
 }
 
+class TextFieldUnderline extends StatelessWidget {
+  TextFieldUnderline(this.hintText, this.obscureText);
 
-class MinhDuc extends StatefulWidget {
-  @override
-  _MinhDucState createState() => _MinhDucState();
-}
+  final String hintText;
+  final bool obscureText;
 
-class _MinhDucState extends State<MinhDuc> {
   @override
   Widget build(BuildContext context) {
-
+    return TextField(
+      obscureText: obscureText,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.white),
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+                color: Colors.white
+            )
+        ),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+                color: Colors.white
+            )
+        ),
+      ),
+    );
   }
-
 }
